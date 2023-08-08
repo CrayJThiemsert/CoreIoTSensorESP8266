@@ -223,6 +223,7 @@ void setup() {
   Serial.begin(115200);
   while(!Serial && millis() < 5000);
 
+  Serial.println();
   Serial.println("Hello CoreIoTSensorESP8266");
   pinMode(LED_BUILTIN, OUTPUT);
   // Init DHT sensor
