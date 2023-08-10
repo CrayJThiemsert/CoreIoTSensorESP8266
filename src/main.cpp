@@ -9,9 +9,11 @@
 #include <ESP8266WiFi.h>
 #include <espnow.h>
 
+#define BOARD_ID 3
+
 uint8_t channel = 1;
 int readingId = 0;
-int id = 2;
+int id = BOARD_ID; // 2;
 
 unsigned long currentMillis = millis(); 
 unsigned long lastTime = 0;  
@@ -60,7 +62,7 @@ struct_message myData;
 struct_message incomingReadings;
 struct_pairing pairingData;
 
-#define BOARD_ID 2
+
 unsigned long start;
 
 // Callback when data is sent
@@ -246,7 +248,7 @@ void setup() {
   esp_now_register_recv_cb(OnDataRecv);
   esp_now_register_send_cb(OnDataSent);
 
-  pairingData.id = 2;
+  pairingData.id = BOARD_ID; // 2
 }
  
 void loop() { 
@@ -260,7 +262,7 @@ void loop() {
 
       //Set values to send
       myData.msgType = DATA;
-      myData.id = 2;
+      myData.id = BOARD_ID; // 2;
       myData.temp = temperature;
       myData.hum = humidity;
       myData.readingId = readingId ++;
